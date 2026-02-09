@@ -1,3 +1,4 @@
+
 const userLocation = document.getElementById("userLocation"),
       converter = document.getElementById("converter"),
       weatherIcon = document.querySelector(".weatherIcon"),
@@ -18,9 +19,9 @@ const userLocation = document.getElementById("userLocation"),
       Forecast = document.querySelector(".Forecast");
 
 const WEATHER_API_ENDPOINT =
-  "https://api.openweathermap.org/data/2.5/weather?appid=03834b759ada101c2a64cb380d3680ac&units=metric";
+  "https://api.openweathermap.org/data/2.5/weather?appid=YOUR_API_KEY&units=metric";
 const FORECAST_API_ENDPOINT =
-  "https://api.openweathermap.org/data/2.5/forecast?appid=03834b759ada101c2a64cb380d3680ac&units=metric";
+  "https://api.openweathermap.org/data/2.5/forecast?appid=YOUR_API_KEY&units=metric";
 
 function findUserLocation() {
   Forecast.innerHTML = '<p style="text-align:center; padding: 20px;">Loading...</p>';
@@ -96,7 +97,7 @@ function findUserLocation() {
       SSValue.innerHTML = sunsetLocal.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
 
       // Fetch UV Index from One Call API (free tier allows current data)
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,daily,alerts&appid=60c936b804cef0fcb3510c8cf6788df8`)
+     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,daily,alerts&appid=YOUR_API_KEY`)
         .then(response => response.json())
         .then(uvData => {
           if (uvData.current && uvData.current.uvi !== undefined) {
@@ -194,3 +195,4 @@ window.addEventListener('DOMContentLoaded', () => {
     findUserLocation();
   }
 });
+
